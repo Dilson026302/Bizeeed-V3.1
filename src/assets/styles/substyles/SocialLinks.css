@@ -1,0 +1,227 @@
+/* General container styles */
+.social-links {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding-top: px;
+  padding-right: 8px;
+  height: calc(100vh - 5px);
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+[data-theme="dark"] .social-links {
+  background-color: rgba(30, 30, 30, 0.9);
+  color: #ffffff;
+}
+
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #666;
+}
+
+[data-theme="dark"] .header h1 {
+  color: #fff; /* White text for dark theme */
+}
+
+.bizeeed-button {
+  background: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.bizeeed-button:hover {
+  background: #24a94a;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+[data-theme="dark"] .button {
+  background: rgba(0, 0, 0, 0.4); /* Transparent black background */
+  color: #ffffff
+}
+
+[data-theme="dark"] .bizeeed-button:hover {
+  background: linear-gradient(90deg, #fec113, #24a94a, #fec113); /* Gradient background */
+  background-size: 300% 100%; /* Ensure gradient is larger than the element */
+  animation: gradient-flow 6s ease infinite; /* Apply gradient flow animation */
+  color: #ffffff; /* White text */
+  border: none; /* Optional: Remove border if it's interfering */
+  cursor: pointer; /* Indicate interactability */
+}
+
+[data-theme="dark"] .bizeeed-button {
+  background: #666;
+  background-size: 300% 100%; /* Larger gradient for animation */
+  animation: gradient-flow 6s ease infinite; /* Apply animation to background */
+  color: #ffffff; /* Transparent text to show gradient */
+  }
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+/* Account grid */
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.account-card {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.account-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+.platform-logo {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.account-card h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  margin: 10px 0;
+}
+
+.account-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.manage-btn, .remove-btn {
+  background-color: #24a94a;
+  color: white;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 5px 0;
+}
+
+.manage-btn:hover, .remove-btn:hover {
+  background-color: #fec113;
+  color: black;
+}
+
+/* Modal styles */
+.platform-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.platform-btn {
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.platform-btn.selected {
+  border-color: #24a94a;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.platform-btn.selected::after {
+  content: "Click confirm to continue";
+  position: absolute;
+  bottom: -35px;
+  font-size: 0.8rem;
+  color: #333;
+  text-align: center;
+  width: 100%;
+}
+.platform-btn:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.platform-btn img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.platform-btn span {
+  font-size: 0.9rem;
+  color: #333;
+  text-transform: capitalize;
+}
+
+/* Skeleton loader */
+.skeleton-loader {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #999;
+}
+.account-stats {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.account-stats p {
+  margin: 5px 0;
+}
+
+

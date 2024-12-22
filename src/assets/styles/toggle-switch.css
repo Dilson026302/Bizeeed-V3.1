@@ -1,0 +1,74 @@
+/* Toggle Switch Container */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* The Toggle Switch */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Toggle Circle */
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Active State (Dark Mode) */
+.toggle-switch.active {
+  background-color: #24a94a;
+}
+
+.toggle-switch.active::after {
+  transform: translateX(25px); /* Moves the circle to the right */
+  background-color: #00d4ff; /* Circle color in active state */
+}
+
+/* Label Style */
+.toggle-label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+[data-theme="dark"] .toggle-label {
+  color: #bbb; /* Softer white for dark mode */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .toggle-container {
+    gap: 8px; /* Reduce gap for smaller screens */
+  }
+
+  .toggle-label {
+    font-size: 12px; /* Smaller font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .toggle-container {
+    gap: 6px; /* Further reduce gap for very small screens */
+  }
+
+  .toggle-label {
+    font-size: 10px; /* Even smaller font size for very small screens */
+  }
+}

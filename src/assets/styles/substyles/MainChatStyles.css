@@ -1,0 +1,87 @@
+.card-ai-assistant {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  height: 100%; /* Occupy full height of the parent container */
+  width: 100%; /* Full width */
+  overflow: hidden; /* Prevent any scrolling in the container */
+  box-sizing: border-box; /* Include padding/border in size calculations */
+}
+
+.chat-app {
+  display: flex;
+  height: 100%; /* Adjust to the full height of the parent container */
+  max-height: 100%; /* Prevent overflow */
+  width: 100%; /* Full width of the parent */
+  overflow: hidden; /* Disable scrolling for the chat app itself */
+  box-sizing: border-box; /* Ensure consistent size calculations */
+}
+
+
+.sidebarchat {
+  background-color: rgba(255, 255, 255, 0.2);  
+  width: 250px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+[data-theme="dark"] .sidebarchat {
+  background-color: rgba(30, 30, 30, 0.9);
+  color: #ffffff;
+}
+
+.sidebarchat.closed {
+  width: 50px;
+}
+
+
+.main-content {
+  flex: 1; /* Takes up remaining space after accounting for .chat-window */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Match the parent's height */
+  overflow: hidden; /* Prevent overflow */
+  margin: 0; /* Reset any extra margin */
+}
+
+
+
+
+.placeholder {
+  display: flex;
+  flex-direction: column; /* Arrange content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  height: 100%; /* Take full height of the parent container */
+  text-align: center; /* Center-align the text */
+  color: #555; /* Subtle dark-gray text color */
+  font-family: 'Arial', sans-serif; /* Clean and readable font */
+  background: rgba(240, 240, 240, 0.5); /* Light translucent background */
+  border: 0px; /* Optional dashed border for an empty state look */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Spacing inside the container */
+  transition: all 0.3s ease; /* Smooth animation on hover */
+}
+
+
+[data-theme="dark"] .placeholder {
+  background: rgba(40, 40, 40, 0.8); /* Slightly lighter translucent background */
+  color: #ccc; /* Softer white for text color */
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.chat-footer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

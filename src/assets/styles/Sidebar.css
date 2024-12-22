@@ -1,0 +1,495 @@
+/* Sidebar Styling */
+
+.sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.6); /* Subtle transparency for seamless blending */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  position: fixed;
+  top: 0px;
+  left: 0;
+  overflow: hidden; /* Hide overflowing content */
+  z-index: 1000;
+  height: 100vh; /* Full height of the viewport */
+    border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Faint shadow for a natural look */
+}
+
+[data-theme="dark"] .sidebar {
+  background-color: rgba(0, 0, 0, 0.4); /* More transparent background for dark mode */
+  backdrop-filter: blur(10px); /* Retain frosted glass effect */
+}
+
+/* On hover, enhance blending and interactivity */
+.sidebar:hover {
+  background-color: rgba(255, 255, 255, 0.5); /* Slightly more opaque on hover */
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+}
+[data-theme="dark"] .sidebar:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* More transparent background for dark mode */
+  backdrop-filter: blur(10px); /* Retain frosted glass effect */
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+/* Sidebar Menu */
+.sidebar-menu {
+  flex: 1; /* Take up available space */
+   list-style-type: none;
+  flex-direction: column;
+  padding: 36px 0 0 0; /* Adjust padding as needed */
+  margin: 0;
+}
+
+/* Sidebar Links */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 12px;
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  opacity: 1; /* Fully visible by default */
+  border-radius: 10px;
+}
+
+[data-theme="dark"] .sidebar-link {
+  color: rgba(255, 255, 255, 0.8); /* White text for dark mode */
+}
+
+
+.sidebar-link:hover {
+  background-color: #e9f7ef;
+  border-radius: 10px;
+}
+
+[data-theme="dark"] .sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle background for hover in dark mode */
+  color: rgba(255, 255, 255, 1); /* Ensure hover text color is fully visible in dark mode */
+}
+
+
+
+.sidebar-link.active {
+  font-weight: bolder;
+  color: #24a94a; /* Brand green for active link */
+  background-color: rgba(255, 255, 255, 0.9); /* Light background for active link in light mode */
+  margin: 5px 0; /* Vertical spacing between links */
+  padding: 10px; /* Add padding for better touch targets on mobile */
+  border-radius: 8px; /* Rounded corners for a modern look */
+}
+
+[data-theme="dark"] .sidebar-link.active {
+  color: #fec113; /* Accent color for active link in dark mode */
+  background-color: rgba(36, 36, 36, 0.9); /* Darker background for active link in dark mode */
+}
+
+
+
+
+/* Gradient animation for active link text */
+/* Gradient animation for active link text */
+.sidebar-link.active .sidebar-text {
+  font-weight: 500;
+  background: linear-gradient(90deg, #fec113, #24a94a, #fec113);
+  background-size: 300% 100%; /* Larger gradient for smoother animation */
+  background-clip: text; /* Standard property */
+  -webkit-background-clip: text; /* Webkit-specific for compatibility */
+  -webkit-text-fill-color: transparent; /* Webkit-specific to make text transparent */
+  text-fill-color: transparent; /* Standard property for compatibility */
+  animation: gradient-flow 6s ease infinite; /* Smooth animation with eased timing */
+}
+
+/* Gradient animation keyframes */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sidebar-link.active {
+    font-size: 14px; /* Adjust font size for smaller screens */
+    margin: 3px 0; /* Reduce vertical spacing */
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-link.active {
+    font-size: 12px; /* Smaller font size for very small screens */
+    margin: 2px 0; /* Further reduce vertical spacing */
+    padding: 6px; /* Compact padding */
+  }
+}
+.sidebar-icon img,
+.icon {
+  width: 30px; /* Adjust as needed */
+  height: 30px; /* Adjust as needed */
+  object-fit: contain;
+}
+
+.sidebar.collapsed {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers content horizontally */
+  justify-content: start; /* Aligns items vertically */
+}
+
+.sidebar.collapsed .sidebar-text {
+  display: none; /* Hide text when collapsed */
+}
+
+
+.sidebar .sidebar-link[title]:hover::after {
+  content: ""; /* Hide tooltip when Sidebar is expanded */
+}
+
+.sidebar-text {
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis for long text */
+  font-weight: normal;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  padding-left: 6px;
+  color: #666; /* Light mode text color */
+  font-size: 1rem; /* Default font size */
+}
+
+[data-theme="dark"] .sidebar-text {
+  color: #bbb; /* Softer white text for dark mode */
+}
+
+
+/* Responsive font size adjustments */
+@media (max-width: 768px) {
+  .sidebar-text {
+    font-size: 0.9rem; /* Slightly smaller font for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-text {
+    font-size: 0.8rem; /* Smaller font for mobile screens */
+  }
+}
+
+
+.sidebar:not(.collapsed) .sidebar-text {
+  transform: translateX(0); /* Ensure text is fully visible */
+}
+
+.sidebar:not(.collapsed) .sidebar-link .sidebar-text {
+  transform: translateX(0); /* Reveals text */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .sidebar-container {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar.collapsed {
+    width: 50px; /* Even smaller for mobile view */
+  }
+}
+
+/* Sidebar Bottom Section */
+
+.sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.sidebar-bottom .sidebar-link {
+  margin-bottom: 1px;
+  font-size: 16px; /* Default font size */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 0.3s ease; /* Smooth transition for size changes */
+}
+
+/* Sidebar collapsed adjustments */
+.sidebar.collapsed .sidebar-bottom {
+  justify-content: flex-end;
+}
+
+.sidebar.collapsed .sidebar-bottom .sidebar-link {
+  font-size: 12px; /* Shrink font size to fit in collapsed sidebar */
+  justify-content: center; /* Center icon in collapsed state */
+  overflow: hidden; /* Hide any overflow */
+}
+
+.sidebar.collapsed .sidebar-bottom .sidebar-link span {
+  display: none; /* Hide text when sidebar is collapsed */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar-bottom .sidebar-link {
+    margin-bottom: 2px; /* Slightly larger spacing on smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .sidebar.collapsed .sidebar-bottom .sidebar-link {
+    font-size: 10px; /* Further shrink font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-bottom .sidebar-link {
+    margin-bottom: 3px; /* Larger spacing for very small screens */
+    font-size: 12px; /* Adjust font size for very small screens */
+  }
+
+  .sidebar.collapsed .sidebar-bottom .sidebar-link {
+    font-size: 8px; /* Smallest font size for very small screens */
+  }
+}
+
+
+
+/* Notification Section */
+.sidebar-bottom .sidebar-notification {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align text and icon properly */
+  width: 100%;
+  padding: 8px 8px; /* Consistent padding with other items */
+  color: rgba(0, 0, 0, 0.8); /* Default text color */
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Effect for Light Theme */
+.sidebar-bottom .sidebar-notification:hover {
+  background-color: #e9f7ef; /* Light green hover effect */
+}
+
+/* Hover Effect for Dark Theme */
+[data-theme="dark"] .sidebar-bottom .sidebar-notification:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle white overlay */
+}
+
+/* Icon Styling */
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  transition: transform 0.3s ease; /* Smooth transition for hover */
+}
+
+.sidebar-bottom .sidebar-notification:hover .sidebar-icon {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Text Styling */
+.sidebar-bottom .sidebar-notification .sidebar-text {
+  font-size: 14px; /* Slightly larger font size */
+  font-weight: 400; /* Moderate weight for better readability */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Ensure no overflow issues */
+  text-overflow: ellipsis; /* Ellipsis for long text */
+  color: inherit; /* Inherit color from parent */
+}
+
+/* Dark Theme Text Color */
+[data-theme="dark"] .sidebar-bottom .sidebar-notification .sidebar-text {
+  color: #bbb; /* Softer white text for dark mode */
+}
+
+/* Collapsed State */
+.sidebar.collapsed .sidebar-notification {
+  justify-content: center; /* Center icon in collapsed state */
+  padding: 8px; /* Reduce padding */
+}
+
+.sidebar.collapsed .sidebar-notification .sidebar-text {
+  display: none; /* Hide text in collapsed state */
+}
+
+
+/* Avatar Section */
+
+.sidebar.collapsed .sidebar-links {
+  display: none; /* Hide My Account and Logout on collapsed state */
+}
+
+.sidebar-avatar:hover {
+  background-color: #e9f7ef;
+}
+
+[data-theme="dark"] .sidebar-avatar:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect for dark theme */
+}
+
+/* Sidebar Avatar */
+.sidebar-avatar {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px; /* Consistent padding with other items */ 
+  border-radius: 8px; /* Rounded corners for a clean look */
+  transition: all 0.3s ease; /* Smooth transitions for state changes */
+  cursor: pointer;
+}
+
+/* Avatar Image */
+.sidebar-avatar .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+  transition: transform 0.3s ease; /* Add smooth scaling effect */
+}
+
+.sidebar-avatar:hover .avatar {
+  transform: scale(1.1); /* Slight zoom-in effect on hover */
+}
+
+/* Avatar Text */
+.sidebar-avatar .sidebar-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666; /* Default text color */
+  text-overflow: ellipsis; /* Ellipsis for long text */
+}
+
+/* Dark Theme Adjustments */
+[data-theme="dark"] .sidebar-avatar .sidebar-text {
+  color: #bbb; /* Softer white for dark theme */
+}
+
+/* Collapsed State */
+.sidebar.collapsed .sidebar-avatar {
+  justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-avatar .sidebar-text {
+  display: none; /* Hide text when sidebar is collapsed */
+}
+
+
+/* General Container for My Account and Logout */
+.sidebar-myaccount {
+  display: flex;
+  flex-direction: column; /* Stack the items vertically */
+  align-items: flex-start;
+  
+  padding: px 1px; /* Consistent padding */
+  width: 100%;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Ensure no overflow issues */
+}
+
+/* My Account Button */
+.sidebar-myaccount a {
+  display: flex;
+  align-items: ;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 8px 12px;
+  color: rgba(0, 0, 0, 0.8); /* Default text color */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-myaccount a:hover {
+  background-color: #e9f7ef; /* Light green hover effect */
+}
+
+/* Collapsed State */
+.sidebar.collapsed .sidebar-myaccount {
+  display: none; /* Hide in collapsed state */
+}
+/* Logout Button */
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 8px 12px;
+  color: rgba(0, 0, 0, 0.8); /* Default text color */
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-logout:hover {
+  background-color: rebeccapurple; /* Light green hover effect */
+}
+
+/* Dark Theme Adjustments */
+[data-theme="dark"] .sidebar-myaccount a,
+[data-theme="dark"] .sidebar-logout {
+  color: #bbb; /* Softer white for dark theme */
+}
+
+[data-theme="dark"] .sidebar-myaccount a:hover{
+background-color: rgba(255, 255, 255, 0.1); /* Subtle white hover effect for dark theme */
+}
+
+
+[data-theme="dark"] .sidebar-logout:hover {
+  background-color: #fec113 /* Subtle white hover effect for dark theme */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar.collapsed {
+    width: 60px;
+  }
+} /* Added missing closing brace here */
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 180px;
+  }
+
+  .sidebar.collapsed {
+    width: 50px;
+  }
+
+  .sidebar-menu .sidebar-link {
+    padding: 6px 8px;
+  }
+
+  .sidebar-menu .sidebar-text {
+    font-size: 10px;
+  }
+
+  .sidebar-menu .avatar {
+    width: 28px;
+    height: 28px;
+  }
+} /* This block was already closed correctly */

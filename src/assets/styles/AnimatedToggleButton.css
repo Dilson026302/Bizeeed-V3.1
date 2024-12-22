@@ -1,0 +1,96 @@
+.animated-toggle-btn {
+  position: relative;
+  background: linear-gradient(90deg, rgba(254, 193, 19, 0.5), rgba(36, 169, 74, 0.5), rgba(254, 193, 19, 0.5));
+  background-size: 300% 100%;
+  animation: gradient-flow 4s infinite linear;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 6%; /* Adjust height as needed */
+  overflow: hidden; /* Ensure gradient stays inside */
+    opacity: 1; /* Full element opacity, but gradient has transparency */
+  border-radius: 0px;
+}
+[data-theme="dark"] .animated-toggle-btn {
+  background:  linear-gradient(90deg, #fec113, #24a94a, #fec113);
+  background-size: 300% 100%;
+  animation: gradient-flow-dark 4s infinite linear; /* Dark gradient flow animation */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 6%;
+  overflow: hidden;
+  opacity: 1;
+  border-radius: 0px;
+}
+
+/* Add the static glassmorphic effect */
+.animated-toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover the full background */
+  height: 100%; /* Cover the full background */
+  background: rgba(255, 255, 255, 0.15); /* Semi-transparent white for glass effect */
+  backdrop-filter: blur(10px); /* Static glassmorphic effect */
+  z-index: 0; /* Ensures it's above the gradient but below the arrow */
+  pointer-events: none; /* Prevent interaction */
+}
+
+[data-theme="dark"] .animated-toggle-btn::before {
+  backdrop-filter: none; /* Disable frost effect */
+  background: transparent; /* No overlay in dark mode */
+}
+/* Gradient flow animation for dark mode */
+@keyframes gradient-flow-dark {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.arrow-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Keep the arrow above the glassmorphic effect */
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  border-top: 5px solid white;
+  border-right: 5px solid white;
+  transform: rotate(45deg); /* Default position to face right */
+  transition: transform 0.3s ease;
+}
+
+.animated-toggle-btn.open .arrow {
+  transform: rotate(-135deg); /* Rotates to face left when toggled */
+}
+
+/* Gradient flow animation */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -1,0 +1,374 @@
+/* Chat Window - WhatsApp-inspired styling */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, #2E8B57, #FDC830); /* Modern gradient */
+  color: #333;
+}
+.new-button {
+  display: flex;
+  background: #ffffff;
+  color: #000000;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%; /* Makes the button occupy the full width of its container */
+  justify-content: center; /* Centers the text or content inside the button */
+  /* Optional: Adds vertical padding for a better look */
+  box-sizing: border-box; /* Ensures padding is included in the button's width */
+  border-radius: 0px;
+
+}
+
+.new-button:hover {
+  background: #24a94a;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+[data-theme="dark"] .new-button {
+  background: rgba(0, 0, 0, 0.4); /* Transparent black background */
+  color: #ffffff
+}
+
+[data-theme="dark"] .new-button:hover {
+  background: linear-gradient(90deg, #fec113, #24a94a, #fec113); /* Gradient background */
+  background-size: 300% 100%; /* Ensure gradient is larger than the element */
+  animation: gradient-flow 6s ease infinite; /* Apply gradient flow animation */
+  color: #ffffff; /* White text */
+  border: none; /* Optional: Remove border if it's interfering */
+  cursor: pointer; /* Indicate interactability */
+}
+
+[data-theme="dark"] .new-button {
+  background: #666;
+  background-size: 300% 100%; /* Larger gradient for animation */
+  animation: gradient-flow 6s ease infinite; /* Apply animation to background */
+  color: #ffffff; /* Transparent text to show gradient */
+  }
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Conversation List */
+.conversation-list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+/* Conversation Item */
+.conversation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 0px;
+  background-color: ;
+  transition: transform 0.2s, background-color 0.3s;
+  max-width: 100%; /* Ensure it doesn't overflow */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+
+
+.conversation-item:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+
+}
+
+[data-theme="dark"] .conversation-item:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+ }
+
+
+
+.conversation-title {
+  font-size: 1rem;
+  color: #666;
+  flex-grow: 1;
+  margin-right: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; /* Prevent title from wrapping */
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c62828;
+}
+
+
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px); /* Full height minus header */
+  justify-content: space-between; /* Pushes footer to the bottom */
+    backdrop-filter: blur(10px); /* Blur for glass effect */
+  background: rgba(255, 255, 255, 0.4); /* Glass effect background */
+  max-height: 100%; /* Ensures it doesn't overflow its container */
+  overflow: hidden; /* Prevents overflow */
+  box-sizing: border-box;
+  margin: 0 0 0 0; /* Set a 10px margin on the right side */
+  padding: 0; /* Remove padding to use full space */
+}
+
+
+
+/* Chat Header */
+.chat-header {
+  display: flex;
+  align-items: center; /* Vertically align items */
+  justify-content: flex-start; /* Align content to the left */
+  height: 50px; /* Make the header smaller */
+  padding: 0 10px; /* Add horizontal padding */
+  background-color: #028476; /* Match your design color */
+  color: #fff; /* Text color */
+  font-size: 16px; /* Smaller font size for title */
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
+}
+
+/* Back Button */
+.chat-header .back-button {
+  background-color: #026b5d; /* Button background */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-right: 10px; /* Add spacing between button and title */
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.chat-header .back-button:hover {
+  background-color: #014e44; /* Darker shade on hover */
+}
+
+
+
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1; /* Take up remaining space within the chat window */
+  overflow-y: auto; /* Allow vertical scrolling for overflowing content */
+  padding: 0; /* Remove padding if not needed */
+}
+
+/* Custom Scrollbar for Chat Body */
+.chat-body::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.chat-body::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray track background */
+  border-radius: 10px; /* Rounded corners for track */
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+  background-color: #bbb; /* Scrollbar handle color */
+  border-radius: 10px; /* Rounded scrollbar handle */
+  border: 2px solid #f1f1f1; /* Optional border for spacing */
+}
+
+.chat-body::-webkit-scrollbar-thumb:hover {
+  background-color: #888; /* Darker color when hovered */
+}
+
+.chat-body::-webkit-scrollbar-corner {
+  background: transparent; /* Optional: Hides corner */
+}
+
+.message {
+  max-width: 70%;
+  padding: 10px 15px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 12px;
+  word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message.user {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000000;
+  align-self: flex-end;
+}
+
+.message.assistant {
+  background: rgba(255, 255, 255, 0.1);
+  color: #333333;
+  align-self: flex-start;
+  backdrop-filter: blur(5px);
+}
+
+.responsive-image {
+  width: 100%;
+  max-width: 300px; /* Optional: Cap image width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+/* Chat Footer Container */
+.chat-footer {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  align-items: flex-end; /* Align items at the bottom */
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+/* File and Audio Icons */
+.chat-footer .icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.chat-footer .icon-button:hover {
+  color: #007bff;
+}
+
+/* Textarea for Messages */
+.chat-footer textarea {
+  flex: 1;
+  resize: none; /* Disable manual resizing */
+  height: auto; /* Allow auto height */
+  min-height: 40px; /* Minimum height for 1 line */
+  max-height: calc(1.5em * 6 + 16px); /* Maximum height for 6 lines */
+  line-height: 1.5; /* Line height for consistent line spacing */
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #333;
+  overflow-y: auto; /* Scroll after max-height is reached */
+}
+
+.chat-footer textarea::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.chat-footer textarea::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray background */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+.chat-footer textarea::-webkit-scrollbar-thumb {
+  background-color: #028476; /* Scrollbar handle color */
+  border-radius: 10px; /* Rounded corners for the handle */
+  border: 2px solid #f1f1f1; /* Optional border for spacing */
+}
+
+.chat-footer textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #026b5d; /* Darker color when hovered */
+}
+
+/* Send Button */
+.chat-footer button {
+  background-color: #028476;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chat-footer button:hover {
+  background-color: #026b5d;
+}
+
+
+.chat-footer input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+
+
+.delete-icon {
+  display: none;
+  cursor: pointer;
+  margin-left: 8px;
+  color: #e53935;
+}
+
+.message:hover .delete-icon {
+  display: inline;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.modal-actions button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-button {
+  background: #e53935;
+  color: #fff;
+}
+
+.cancel-button {
+  background: #ccc;
+  color: #000;
+}
