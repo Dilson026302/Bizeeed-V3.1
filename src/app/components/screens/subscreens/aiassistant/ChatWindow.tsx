@@ -90,7 +90,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ conversationId, onBack }) => {
 
       const assistantMessage: MessageType = {
         conversation_id: conversationId,
-        user_id: "assistant-id",
+        user_id: user.user.id,
         sender: "assistant",
         content: responseData.choices[0]?.message?.content || "No response from assistant.",
         created_at: new Date().toISOString(),
